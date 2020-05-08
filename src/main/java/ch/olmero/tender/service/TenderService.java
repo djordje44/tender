@@ -1,6 +1,9 @@
 package ch.olmero.tender.service;
 
+import ch.olmero.tender.dto.TenderOfferDto;
 import ch.olmero.tender.entity.Tender;
+
+import java.util.List;
 
 public interface TenderService {
 
@@ -17,7 +20,14 @@ public interface TenderService {
      *
      * @param tenderId Id of tender.
      * @param offerId Id of offer to be accepted.
-     * @return tender
      */
     void acceptOffer(Integer tenderId, Integer offerId);
+
+    /**
+     * Get all offers for tender.
+     *
+     * @param tenderId Id of tender.
+     * @return list of offers.
+     */
+    List<TenderOfferDto> getTenderOffers(Integer tenderId);
 }

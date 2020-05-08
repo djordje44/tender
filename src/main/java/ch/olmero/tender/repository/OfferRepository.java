@@ -6,12 +6,14 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface OfferRepository extends JpaRepository<Offer, Integer> {
 
     Optional<Offer> findOfferByIdAndTenderId(Integer id, Integer tenderId);
+    List<Offer> findOffersByTenderId(Integer tenderId);
 
     @Modifying
     @Query("UPDATE Offer o SET o.accepted = false WHERE o.tender.id = :tenderId AND o.accepted IS NULL")

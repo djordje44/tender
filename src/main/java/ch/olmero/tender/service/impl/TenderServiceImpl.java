@@ -1,8 +1,10 @@
 package ch.olmero.tender.service.impl;
 
+import ch.olmero.tender.dto.TenderOfferDto;
 import ch.olmero.tender.entity.Offer;
 import ch.olmero.tender.entity.Tender;
 import ch.olmero.tender.exception.BadRequestException;
+import ch.olmero.tender.mapper.OfferMapper;
 import ch.olmero.tender.repository.ConstructionSiteRepository;
 import ch.olmero.tender.repository.IssuerRepository;
 import ch.olmero.tender.repository.OfferRepository;
@@ -13,9 +15,11 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static java.lang.String.format;
+import static java.util.stream.Collectors.toList;
 
 @Log4j2
 @Service
@@ -60,6 +64,15 @@ public class TenderServiceImpl implements TenderService {
         tenderRepository.save(tender);
         offerRepository.save(offer);
         offerRepository.rejectNonAcceptedOffers(tender.getId());
+    }
+
+    @Override
+    public List<TenderOfferDto> getTenderOffers(Integer tenderId) {
+        List<Offer> offers = offerRepository.findOffersByTenderId(tenderId);
+
+        return offers.stream()
+                .map(OfferMapper.INSTANCE::offerToTenderOfferDto)
+                .collect(toList());
     }
 
     private void validateIssuer(Integer issuerId) {
