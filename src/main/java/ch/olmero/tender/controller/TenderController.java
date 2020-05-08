@@ -1,11 +1,13 @@
 package ch.olmero.tender.controller;
 
+import ch.olmero.tender.dto.AcceptOfferDto;
 import ch.olmero.tender.dto.AddTenderDto;
 import ch.olmero.tender.entity.Tender;
 import ch.olmero.tender.mapper.TenderMapper;
 import ch.olmero.tender.service.TenderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +28,13 @@ public class TenderController {
                 TenderMapper.INSTANCE.addTenderDtoToTender(tenderDto));
 
         return TenderMapper.INSTANCE.tenderToAddTenderDto(result);
+    }
+
+    @PutMapping("/offer")
+    public void acceptOffer(@RequestBody @Valid AcceptOfferDto acceptOfferDto) {
+
+        tenderService.acceptOffer(acceptOfferDto.getTenderId(), acceptOfferDto.getOfferId());
+
     }
 
 }

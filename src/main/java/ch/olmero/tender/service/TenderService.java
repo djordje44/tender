@@ -11,4 +11,13 @@ public interface TenderService {
      * @return tender
      */
     Tender addTender(Tender tender);
+
+    /**
+     * Accept offer for tender.
+     *
+     * @param tenderId Id of tender.
+     * @param offerId Id of offer to be accepted.
+     * @return tender
+     */
+    void acceptOffer(Integer tenderId, Integer offerId);
 }
