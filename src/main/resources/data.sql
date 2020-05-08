@@ -51,7 +51,7 @@ CREATE TABLE offers
     accepted  TINYINT(1) DEFAULT NULL,
     PRIMARY KEY (id),
     CONSTRAINT FK_offers_tender_id FOREIGN KEY (tender_id) REFERENCES tenders (id),
-    CONSTRAINT FK_offers_bidder_id FOREIGN KEY (bidder_id) REFERENCES issuers (id)
+    CONSTRAINT FK_offers_bidder_id FOREIGN KEY (bidder_id) REFERENCES bidders (id)
 );
 
 
