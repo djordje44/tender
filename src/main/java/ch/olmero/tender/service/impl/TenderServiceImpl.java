@@ -68,11 +68,20 @@ public class TenderServiceImpl implements TenderService {
 
     @Override
     public List<TenderOfferDto> getTenderOffers(Integer tenderId) {
+        log.debug(format("Getting offers for tender %s", tenderId));
+
         List<Offer> offers = offerRepository.findOffersByTenderId(tenderId);
 
         return offers.stream()
                 .map(OfferMapper.INSTANCE::offerToTenderOfferDto)
                 .collect(toList());
+    }
+
+    @Override
+    public List<Tender> getIssuerTenders(Integer issuerId) {
+        log.debug(format("Getting tenders for issuer %s", issuerId));
+
+        return tenderRepository.findAllByIssuerId(issuerId);
     }
 
     private void validateIssuer(Integer issuerId) {

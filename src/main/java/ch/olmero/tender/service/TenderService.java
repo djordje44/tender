@@ -30,4 +30,12 @@ public interface TenderService {
      * @return list of offers.
      */
     List<TenderOfferDto> getTenderOffers(Integer tenderId);
+
+    /**
+     * Get all tenders for issuer.
+     *
+     * @param issuerId Id of issuer.
+     * @return list of tenders.
+     */
+    List<Tender> getIssuerTenders(Integer issuerId);
 }
