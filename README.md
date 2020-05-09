@@ -18,6 +18,20 @@ DB details:
 
 Application is running on port 8080.
 
+Pre-inserted data:
+    
+    Construction sites:
+    - ID: 1, PROJECT_NAME: Warehouse for company X, DESCRIPTION: Building warehouse for company X, LOCATION: North Boulevard 123
+    - ID: 2, PROJECT_NAME: Old Trafford renovation, DESCRIPTION: Renovation of football stadium, LOCATION: Major Street 123
+    
+    Issuers:
+    - ID: 1, FIRST_NAME: John, LAST_NAME: Doe
+    - ID: 2, FIRST_NAME: Brian, LAST_NAME: Mills
+    
+    Bidders:
+    - ID: 1, COMPANY_NAME: Hyper Building
+    - ID: 2, COMPANY_NAME: Lego Constructions
+
 
 ## API usage examples
 
