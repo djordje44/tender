@@ -59,8 +59,11 @@ CREATE TABLE offers
 INSERT INTO construction_sites (project_name, description, location)
 VALUES ('Warehouse for company X', 'Building warehouse for company X', 'North Boulevard 123');
 
-INSERT INTO issuers (first_name, last_name)
-VALUES ('John', 'Doe');
+INSERT INTO construction_sites (project_name, description, location)
+VALUES ('Old Trafford renovation', 'Renovation of football stadium', 'Major Street 123');
+
+INSERT INTO issuers (first_name, last_name) VALUES ('John', 'Doe');
+INSERT INTO issuers (first_name, last_name) VALUES ('Brian', 'Mills');
 
 INSERT INTO bidders (company_name) VALUES ('Hyper Building');
 INSERT INTO bidders (company_name) VALUES ('Lego Constructions');
